@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
+import "hardhat/console.sol";
 
 // Solidity Tutorial - Blockchain Workshop
 
@@ -10,7 +11,8 @@ pragma solidity ^0.8.13;
 contract EtherWallet {
     address payable public owner;
 
-    constructor() {
+
+    constructor() payable {
         owner = payable(msg.sender);
     }
 
@@ -19,9 +21,9 @@ contract EtherWallet {
     // Function to withdraw amount
     function withdraw(uint _amount) external returns(string memory){
         
-       
         bool success;
         
+        console.log(block.timestamp);
         // Check the caller is owner
         // Transfer the amount
         if( msg.sender == owner)
@@ -38,11 +40,13 @@ contract EtherWallet {
             return "caller is not owner";
         }
         
-        
+    return "Success! caller is owner";
     }
 
     // Function to get the Balance of contract
     function getBalance() external view returns (uint) {
+
+        console.log(msg.sender);  
         return address(this).balance;
     }
 }
