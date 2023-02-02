@@ -14,7 +14,9 @@ contract FunctionModifier {
         
         // write your code here
     }
-
+    
+    receive() external payable {}
+    
     // Requirement: 
     // Modifier to check that the caller is the owner of
     // the contract.
